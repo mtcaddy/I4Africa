@@ -20,3 +20,7 @@ APPICS:
 Instagram:
 Facebook:
 Telegram:
+
+
+#Site deployment
+docker build -t kipya/i4asite . && docker push kipya/i4asite:latest
