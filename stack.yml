@@ -6,6 +6,9 @@ services:
     networks:
       - traefik-public
     deploy:
+      placement:
+        constraints:
+          - node.labels.nodesize == big
       labels:
         - traefik.backend.loadbalancer.swarm=true
         - traefik.frontend.rule=Host:i4a.devspace.kipya.com,ifor.africa
