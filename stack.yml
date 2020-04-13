@@ -11,7 +11,7 @@ services:
           - node.labels.nodesize == big
       labels:
         - traefik.backend.loadbalancer.swarm=true
-        - traefik.frontend.rule=Host:i4a.devspace.kipya.com,ifor.africa
+        - traefik.frontend.rule=Host:i4a.devspace.kipya.com,ifor.africa,www.ifor.africa
         - traefik.enable=true
         - traefik.port=80
         - traefik.tags=traefik-public
