@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  app:
+    image: kipya/i4asite:latest
+    networks:
+      - traefik-public
+    deploy:
+      labels:
+        - traefik.backend.loadbalancer.swarm=true
+        - traefik.frontend.rule=Host:i4a.devspace.kipya.com,i4.africa
+        - traefik.enable=true
+        - traefik.port=80
+        - traefik.tags=traefik-public
+        - traefik.docker.network=traefik-public
+        - traefik.redirectorservice.frontend.entryPoints=https,http
+        - traefik.redirectorservice.frontend.redirect.entryPoint=https
+        - traefik.webservice.frontend.entryPoints=https,http
+        - traefik.backend.loadbalancer.stickiness=true
+        - traefik.frontend.headers.SSLRedirect=true
+
+networks:
+  traefik-public:
+    external: true
+    driver_opts:
+      encrypted: ""
